@@ -1,0 +1,16 @@
+{
+	"name": "JoinTableSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_for_sql_database",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "",
+			"table": ""
+		}
+	}
+}
