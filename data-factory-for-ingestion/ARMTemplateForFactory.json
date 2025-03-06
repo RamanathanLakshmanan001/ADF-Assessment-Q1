@@ -593,6 +593,64 @@
 								}
 							]
 						}
+					},
+					{
+						"name": "Join all tables",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy Country Code from stage to prep",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[dbo].[joinAll]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "JoinTableSource",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "joinTableDestination",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
@@ -630,6 +688,8 @@
 				"[concat(variables('factoryId'), '/datasets/countryCodeTable')]",
 				"[concat(variables('factoryId'), '/datasets/Removing_null_values_in_stage_schema')]",
 				"[concat(variables('factoryId'), '/datasets/removed_null_values_and_moved_to_prep')]",
+				"[concat(variables('factoryId'), '/datasets/JoinTableSource')]",
+				"[concat(variables('factoryId'), '/datasets/joinTableDestination')]",
 				"[concat(variables('factoryId'), '/datasets/DayCSV')]",
 				"[concat(variables('factoryId'), '/datasets/eachDayTable')]",
 				"[concat(variables('factoryId'), '/datasets/stage')]",
@@ -1077,6 +1137,48 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/ADF-assessment')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/JoinTableSource')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linked_service_for_sql_database",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "",
+					"table": ""
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/linked_service_for_sql_database')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/joinTableDestination')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linked_service_for_sql_database",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "prep_schema",
+					"table": "joinedTable"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/linked_service_for_sql_database')]"
 			]
 		}
 	]
