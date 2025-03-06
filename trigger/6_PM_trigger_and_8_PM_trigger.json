@@ -1,0 +1,27 @@
+{
+	"name": "6_PM_trigger_and_8_PM_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2025-03-06T12:35:00",
+				"endTime": "2025-03-09T12:35:00",
+				"timeZone": "India Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						18,
+						20
+					]
+				}
+			}
+		}
+	}
+}
