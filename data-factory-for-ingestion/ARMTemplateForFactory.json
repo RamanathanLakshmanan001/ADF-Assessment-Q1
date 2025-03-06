@@ -108,8 +108,6 @@
 					{
 						"name": "Copy Customer Excel",
 						"type": "Copy",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "0.12:00:00",
@@ -163,8 +161,6 @@
 					{
 						"name": "Copy Product CSV",
 						"type": "Copy",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "Copy Customer Excel",
@@ -228,8 +224,6 @@
 					{
 						"name": "ForEach_orders",
 						"type": "ForEach",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "Get Order Files",
@@ -318,8 +312,6 @@
 					{
 						"name": "Get Order Files",
 						"type": "GetMetadata",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "Copy Product CSV",
@@ -358,8 +350,6 @@
 					{
 						"name": "Copy Country Code CSV",
 						"type": "Copy",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "ForEach_orders",
@@ -423,8 +413,6 @@
 					{
 						"name": "ForEach_stage_to_prep",
 						"type": "ForEach",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "ForEach_Cleaning_using_SP",
@@ -564,8 +552,6 @@
 					{
 						"name": "ForEach_Cleaning_using_SP",
 						"type": "ForEach",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "Copy Country Code CSV",
@@ -1048,6 +1034,36 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('linked_service_for_sql_database_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/6_PM_trigger_and_8_PM_trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2025-03-06T12:35:00",
+						"endTime": "2025-03-09T12:35:00",
+						"timeZone": "India Standard Time",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								18,
+								20
+							]
+						}
 					}
 				}
 			},
