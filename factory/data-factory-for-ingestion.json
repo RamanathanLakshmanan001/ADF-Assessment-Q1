@@ -1,0 +1,9 @@
+{
+	"name": "data-factory-for-ingestion",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8fa2811d-4bac-4e82-896f-415f281d5633",
+		"tenantId": "2800c0a0-70e9-49be-8733-faeaa6aced99"
+	}
+}

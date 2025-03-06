@@ -1,0 +1,17 @@
+{
+	"name": "removed_null_values_and_moved_to_prep",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_for_sql_database",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "prep_schema",
+			"table": "countryCodeDetails"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

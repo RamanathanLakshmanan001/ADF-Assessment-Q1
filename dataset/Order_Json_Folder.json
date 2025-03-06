@@ -1,0 +1,19 @@
+{
+	"name": "Order_Json_Folder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_for_blob_storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "order-details"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,25 @@
+{
+	"name": "prep",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_for_sql_database",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"receiveTable": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "prep_schema",
+			"table": {
+				"value": "@dataset().receiveTable",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

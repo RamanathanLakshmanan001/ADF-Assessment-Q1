@@ -1,0 +1,17 @@
+{
+	"name": "eachDayTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_for_sql_database",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "stage_schema",
+			"table": "orderDetails"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
