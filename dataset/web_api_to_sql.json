@@ -1,0 +1,16 @@
+{
+	"name": "web_api_to_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_for_sql_database",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "webAPI_schema",
+			"table": "Personal_Identity"
+		}
+	}
+}

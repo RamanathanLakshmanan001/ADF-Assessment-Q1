@@ -1,0 +1,12 @@
+{
+	"name": "RestResource_Q2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_for_Q2_REST_API",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
