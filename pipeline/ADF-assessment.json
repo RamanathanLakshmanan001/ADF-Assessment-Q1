@@ -5,8 +5,6 @@
 			{
 				"name": "Copy Customer Excel",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -58,8 +56,6 @@
 			{
 				"name": "Copy Product CSV",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy Customer Excel",
@@ -121,8 +117,6 @@
 			{
 				"name": "ForEach_orders",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Get Order Files",
@@ -209,8 +203,6 @@
 			{
 				"name": "Get Order Files",
 				"type": "GetMetadata",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy Product CSV",
@@ -248,8 +240,6 @@
 			{
 				"name": "Copy Country Code CSV",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach_orders",
@@ -311,8 +301,6 @@
 			{
 				"name": "ForEach_stage_to_prep",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach_Cleaning_using_SP",
@@ -450,8 +438,6 @@
 			{
 				"name": "ForEach_Cleaning_using_SP",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy Country Code CSV",
