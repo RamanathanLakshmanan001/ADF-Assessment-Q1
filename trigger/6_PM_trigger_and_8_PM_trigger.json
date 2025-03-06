@@ -3,13 +3,20 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Stopped",
-		"pipelines": [],
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ADF-assessment",
+					"type": "PipelineReference"
+				}
+			}
+		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
 				"frequency": "Day",
 				"interval": 1,
-				"startTime": "2025-03-06T12:35:00",
+				"startTime": "2025-03-05T18:00:00",
 				"endTime": "2025-03-09T12:35:00",
 				"timeZone": "India Standard Time",
 				"schedule": {
