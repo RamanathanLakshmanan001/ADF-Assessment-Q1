@@ -8,11 +8,35 @@
 		"linked_service_for_blob_storage_connectionString": {
 			"value": ""
 		},
+		"linked_service_for_local_db_password": {
+			"value": ""
+		},
+		"linked_service_for_snowflake_password": {
+			"value": ""
+		},
 		"linked_service_for_sql_database_password": {
 			"value": ""
 		},
 		"linked_service_for_Q2_REST_API_properties_typeProperties_url": {
 			"value": "https://jsonplaceholder.typicode.com/users"
+		},
+		"linked_service_for_blob_mini_project_sasUri": {
+			"value": ""
+		},
+		"linked_service_for_local_db_properties_typeProperties_server": {
+			"value": "JM-DKT-049"
+		},
+		"linked_service_for_local_db_properties_typeProperties_database": {
+			"value": "DE_mini_project"
+		},
+		"linked_service_for_local_db_properties_typeProperties_userName": {
+			"value": "AzureAD\\RamanathanL"
+		},
+		"linked_service_for_snowflake_properties_typeProperties_database": {
+			"value": "DE_mini_project_DB"
+		},
+		"linked_service_for_snowflake_properties_typeProperties_role": {
+			"value": "ACCOUNTADMIN"
 		},
 		"linked_service_for_sql_database_properties_typeProperties_server": {
 			"value": "server-for-adf.database.windows.net"
