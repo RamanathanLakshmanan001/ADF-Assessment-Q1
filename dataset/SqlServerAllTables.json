@@ -1,0 +1,24 @@
+{
+	"name": "SqlServerAllTables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_for_local_db",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablesInDataset": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tablesInDataset",
+				"type": "Expression"
+			}
+		}
+	}
+}

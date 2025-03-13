@@ -1,0 +1,24 @@
+{
+	"name": "SnowflakeTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_for_snowflake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablesInSnowflake": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SnowflakeV2Table",
+		"schema": [],
+		"typeProperties": {
+			"schema": "TEST_SCHEMA",
+			"table": {
+				"value": "@dataset().tablesInSnowflake",
+				"type": "Expression"
+			}
+		}
+	}
+}

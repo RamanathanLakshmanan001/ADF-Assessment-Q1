@@ -1,0 +1,91 @@
+{
+	"name": "DE_mini_project",
+	"properties": {
+		"activities": [
+			{
+				"name": "FE_moving_to_snowflake",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('tablesFromPipeline')",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy data to snowflake",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "SnowflakeV2Sink",
+									"importSettings": {
+										"type": "SnowflakeImportCopyCommand"
+									}
+								},
+								"enableStaging": true,
+								"stagingSettings": {
+									"linkedServiceName": {
+										"referenceName": "linked_service_for_blob_mini_project",
+										"type": "LinkedServiceReference"
+									},
+									"path": "blob-as-staging-area"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "SqlServerAllTables",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablesInDataset": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "SnowflakeTable1",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablesInSnowflake": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"tablesFromPipeline": {
+				"type": "Array",
+				"defaultValue": [
+					"CUSTOMERS$",
+					"PRODUCTS$",
+					"TRANSACTION$",
+					"COUNTRYREGION"
+				]
+			}
+		},
+		"annotations": []
+	}
+}
