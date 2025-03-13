@@ -1,0 +1,21 @@
+{
+	"name": "linked_service_for_local_db",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "JM-DKT-049",
+			"database": "DE_mini_project",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "Windows",
+			"userName": "AzureAD\\RamanathanL",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIxMGQ3NmVmOS04NTYxLTQ1MjgtYTQ2ZC0wOTgyNThiOTNlNWIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "selfHostedIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
