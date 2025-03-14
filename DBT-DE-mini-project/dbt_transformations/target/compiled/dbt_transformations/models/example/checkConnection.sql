@@ -1,0 +1,4 @@
+SELECT 
+    *
+FROM
+    DBT_MINI_PROJECT_DB.TEST_SCHEMA.customers$

@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: healthcare_data
+    database: DE_MINI_PROJECT_DB
+    schema: RAW
+    tables:
+      - name: customers$ 
+      - name: countryRegion
+      - name: products$
+      - name: transaction$
